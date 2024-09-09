@@ -46,8 +46,7 @@ pipeline{
                     ls -lrt
                 '''
             }
-        }
-        
+        }       
         stage('Build'){
             steps {
                 // Use the environment variable in your build file
@@ -61,14 +60,7 @@ pipeline{
                 """
             }
         }
-    //     stage('Build'){
-    //         steps{
-    //             sh """
-    //             zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
-    //             ls -ltr
-    //             """
-    //         }
-    // }
+    }
 
     post{
         always { 
