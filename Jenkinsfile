@@ -15,7 +15,7 @@ pipeline{
 
     environment{
         JENKINS_URL='http://54.160.219.238:8080/'
-        NEXUS_URL='http://44.204.30.237:8081/'
+        NEXUS_URL='http://44.204.30.237:8081'
         def appVersion = ''
 
     }
