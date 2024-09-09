@@ -20,9 +20,11 @@ pipeline{
     }
 
     stages {
-        stage('Test') {
+        stage('Install Dependencyies') {
             steps {
-                echo 'Hello World'
+                sh '''
+                    npm install
+                '''
             }
         }
         stage('Test-2') {
