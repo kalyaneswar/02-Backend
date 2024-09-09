@@ -35,7 +35,7 @@ pipeline{
                     echo "Application Version: ${version}"
 
                     // Set the version as an environment variable
-                    env.APP_VERSION = version
+                    APP_VERSION = version
                 }
             }
         }
@@ -51,11 +51,11 @@ pipeline{
         stage('Build') {
             steps {
                 // Use the environment variable in your build file
-                echo "Building application version ${env.APP_VERSION}"
+                echo "Building application version ${APP_VERSION}"
                 // Example build command that uses the version
                 // sh "your-build-command --version=${env.APP_VERSION}"
                 sh '''
-                    zip backend-${env.APP_VERSION}.zip * -x Jenkinsfile backend-${env.APP_VERSION}.zip
+                    zip backend-${APP_VERSION}.zip * -x Jenkinsfile backend-${APP_VERSION}.zip
                     pwd
                     ls -lrt
                 '''
