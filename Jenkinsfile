@@ -48,21 +48,27 @@ pipeline{
             }
         }
         
-        stage('Build') {
+        stage('Build'){
             steps {
                 // Use the environment variable in your build file
-                echo "Building application version ${appVersion}"
+                // echo "Building application version ${appVersion}"
                 // Example build command that uses the version
                 // sh "your-build-command --version=${env.APP_VERSION}"
                 sh '''
-                    rm *.zip
-                    zip -q -r backend-${appVersion}.zip * -x Jenkinsfile backend-${appVersion}.zip
-                    pwd
-                    ls -lrt
+                zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
+                pwd
+                ls -lrt
                 '''
             }
         }
-    }
+    //     stage('Build'){
+    //         steps{
+    //             sh """
+    //             zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
+    //             ls -ltr
+    //             """
+    //         }
+    // }
 
     post{
         always { 
