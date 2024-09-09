@@ -54,6 +54,9 @@ pipeline{
                 echo "Building application version ${env.APP_VERSION}"
                 // Example build command that uses the version
                 // sh "your-build-command --version=${env.APP_VERSION}"
+                sh '''
+                    zip backend-${env.APP_VERSION}.zip * -x Jenkinsfile
+                '''
             }
         }
     }
