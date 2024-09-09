@@ -55,6 +55,7 @@ pipeline{
                 // Example build command that uses the version
                 // sh "your-build-command --version=${env.APP_VERSION}"
                 sh '''
+                    rm *.zip
                     zip -q -r backend-${appVersion}.zip * -x Jenkinsfile backend-${appVersion}.zip
                     pwd
                     ls -lrt
