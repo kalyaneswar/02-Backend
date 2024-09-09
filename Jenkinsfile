@@ -65,15 +65,15 @@ pipeline{
                  nexusArtifactUploader(
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: ${NEXUS_URL},
+                    nexusUrl: "${NEXUS_URL}",
                     groupId: 'com.expense',
-                    version: ${appVersion},
+                    version:" ${appVersion}",
                     repository: 'backend',
                     credentialsId: 'nexus-auth',
                     artifacts: [
                         [artifactId: projectName,
                         classifier: '',
-                        file: 'backend-' + ${appVersion} + '.zip',
+                        file: 'backend-' + "${appVersion}" + '.zip',
                         type: 'zip']
         ]
      )
