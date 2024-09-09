@@ -16,19 +16,11 @@ pipeline{
     environment{
         JENKINS_URL='http://54.160.219.238:8080/'
         NEXUS_URL='http://44.204.30.237:8081/'
-        APP_VERSION=''
+        // APP_VERSION=''
 
     }
 
     stages {
-        stage('Install Dependencyies') {
-            steps {
-                sh '''
-                    npm install
-                    ls -lrt
-                '''
-            }
-        }
         stage('Read Application Version') {
             steps {
                 
@@ -47,6 +39,15 @@ pipeline{
                 }
             }
         }
+        stage('Install Dependencyies') {
+            steps {
+                sh '''
+                    npm install
+                    ls -lrt
+                '''
+            }
+        }
+        
         stage('Build') {
             steps {
                 // Use the environment variable in your build file
