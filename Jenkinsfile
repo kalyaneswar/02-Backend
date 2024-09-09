@@ -16,7 +16,7 @@ pipeline{
     environment{
         JENKINS_URL='http://54.160.219.238:8080/'
         NEXUS_URL='http://44.204.30.237:8081/'
-        // APP_VERSION=''
+        APP_VERSION=''
 
     }
 
@@ -55,7 +55,7 @@ pipeline{
                 // Example build command that uses the version
                 // sh "your-build-command --version=${env.APP_VERSION}"
                 sh '''
-                    zip backend-${env.APP_VERSION}.zip * -x Jenkinsfile
+                    zip backend-${APP_VERSION}.zip * -x Jenkinsfile
                 '''
             }
         }
