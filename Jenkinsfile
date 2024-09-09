@@ -56,6 +56,8 @@ pipeline{
                 // sh "your-build-command --version=${env.APP_VERSION}"
                 sh '''
                     zip backend-${APP_VERSION}.zip * -x Jenkinsfile backend-${APP_VERSION}.zip
+                    pwd
+                    ls -lrt
                 '''
             }
         }
