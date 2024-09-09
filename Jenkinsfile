@@ -51,11 +51,11 @@ pipeline{
         stage('Build') {
             steps {
                 // Use the environment variable in your build file
-                echo "Building application version ${version}"
+                echo "Building application version ${APP_VERSION}"
                 // Example build command that uses the version
                 // sh "your-build-command --version=${env.APP_VERSION}"
                 sh '''
-                    zip backend-${version}.zip * -x Jenkinsfile backend-${version}.zip
+                    zip backend-${APP_VERSION}.zip * -x Jenkinsfile backend-${APP_VERSION}.zip
                     pwd
                     ls -lrt
                 '''
