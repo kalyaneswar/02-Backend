@@ -54,11 +54,11 @@ pipeline{
                 // echo "Building application version ${appVersion}"
                 // Example build command that uses the version
                 // sh "your-build-command --version=${env.APP_VERSION}"
-                sh '''
+                sh """
                 zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
                 pwd
                 ls -lrt
-                '''
+                """
             }
         }
     //     stage('Build'){
