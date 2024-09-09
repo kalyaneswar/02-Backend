@@ -16,7 +16,7 @@ pipeline{
     environment{
         JENKINS_URL='http://54.160.219.238:8080/'
         NEXUS_URL='http://44.204.30.237:8081/'
-        APP_VERSION=''
+        def appVersion = ''
 
     }
 
@@ -29,13 +29,13 @@ pipeline{
                     def jsonFile = readJSON file: 'package.json'
                     
                     // Extract the version from the JSON
-                    def version = jsonFile.version
+                    appVersion = jsonFile.version
 
                     // Print the version (for debugging purposes)
-                    echo "Application Version: ${version}"
+                    echo "Application Version: ${appVersion}"
 
                     // Set the version as an environment variable
-                    APP_VERSION = version
+                    // APP_VERSION = version
                 }
             }
         }
@@ -51,11 +51,11 @@ pipeline{
         stage('Build') {
             steps {
                 // Use the environment variable in your build file
-                echo "Building application version ${APP_VERSION}"
+                echo "Building application version ${appVersion}"
                 // Example build command that uses the version
                 // sh "your-build-command --version=${env.APP_VERSION}"
                 sh '''
-                    zip backend-${APP_VERSION}.zip * -x Jenkinsfile backend-${APP_VERSION}.zip
+                    zip -q -r backend-${appVersion}.zip * -x Jenkinsfile backend-${appVersion}.zip
                     pwd
                     ls -lrt
                 '''
