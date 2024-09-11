@@ -15,7 +15,7 @@ pipeline{
 
     environment{
         JENKINS_URL='http://jenkins.kalyaneswar.online:8080/'
-        NEXUS_URL='http://nexus.kalyaneswar.online:8081'
+        NEXUS_URL='nexus.kalyaneswar.online:8081'
         def appVersion = ''
 
     }
