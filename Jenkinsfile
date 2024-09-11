@@ -14,8 +14,8 @@ pipeline{
     // }
 
     environment{
-        JENKINS_URL='http://54.160.219.238:8080/'
-        NEXUS_URL='http://44.204.30.237:8081'
+        JENKINS_URL='http://jenkins.kalyaneswar.online:8080/'
+        NEXUS_URL='http://nexus.kalyaneswar.online:8081'
         def appVersion = ''
 
     }
@@ -77,6 +77,16 @@ pipeline{
                         type: 'zip']
                          ]
                     )
+            }
+        }
+        // Upstream Pipeline: After building and uploading the artifact, 
+        // it triggers the downstream pipeline (CD-Pipeline-Job) and passes the appVersion parameter.
+        stage('Trigger CD Pipeline') {
+            steps {
+                build job: '02.01-Backend-down_stream-', // Name of your downstream job
+                parameters: [
+                    string(name: 'appVersion', value: "${appVersion}")
+                ]
             }
         }
         
