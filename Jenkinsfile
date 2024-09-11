@@ -83,7 +83,7 @@ pipeline{
         // it triggers the downstream pipeline (CD-Pipeline-Job) and passes the appVersion parameter.
         stage('Trigger CD Pipeline') {
             steps {
-                build job: '02.01-Backend-down_stream-', // Name of your downstream job
+                build job: 'backend-deploy', // Name of your downstream job
                 parameters: [
                     string(name: 'appVersion', value: "${appVersion}")
                 ]
